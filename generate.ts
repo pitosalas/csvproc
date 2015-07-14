@@ -12,18 +12,33 @@ export class Generate {
 
   generateDataColumns():string {
 /* generate one of these rows for each question.
-
   data.addColumn('number', 'Object Oriented Design');
   data.addColumn('number', 'Source Control');
   data.addColumn('number', 'Ruby on Rails');
   data.addColumn('number', 'Debugging');
 */
-  var result = "";
-  for (var question of this.proj.questions) {
-    result += `data.addColumn('number', '${question}');`
+    var result = "";
+    for (var question of this.proj.questions) {
+      result += `data.addColumn('number', '${question}');`
+    }
+    return result;
   }
-  return result;
-}
+
+  generateTicValues():string {
+  /* Generate one of these rows for each desired horizontal tic
+    new Date(2015, 1, 11),
+    new Date(2015, 2, 11),
+    new Date(2015, 3, 11),
+    new Date(2015, 4, 11),
+    new Date(2015, 5, 11),
+    new Date(2015, 6, 11)*/
+    var result = "";
+    for (var month of this.proj.getSurveyMonths()) {
+      result += `new Date(${month.getFullYear()}, ${month.getMonth()}, 1);`
+    }
+    return result;
+  }
+
 
   chartHtmlFileContents():string {
     var chart_html_template = `<script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -55,13 +70,7 @@ export class Generate {
             chartArea: {left:"20%",top: '10%',width:'55%',height:'70%'},
             hAxis: {
                 title: 'Survey Number',
-                ticks: [new Date(2015, 1, 11),
-                        new Date(2015, 2, 11),
-                        new Date(2015, 3, 11),
-                        new Date(2015, 4, 11),
-                        new Date(2015, 5, 11),
-                        new Date(2015, 6, 11)
-                        ],
+                ticks: [${this.generateTicValues()}],
                 gridlines: {color: 'none'}
             },
             vAxis: {

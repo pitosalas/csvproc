@@ -1,3 +1,10 @@
-console.log("step 1");
-console.log("step 2");
-console.log("step 3");
+var ar:Date[] = [];
+var d:Date;
+
+d = new Date();
+ar.push(new Date(d.valueOf()));
+
+d.setMonth(0);
+ar.push(d);
+
+console.log(ar);
