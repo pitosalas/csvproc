@@ -1,0 +1,11 @@
+{
+  "responses": [
+    { "value": 0, "text": "At a loss to explain it..."},
+    { "value": 1, "text": "Have a vague sense..."},
+    { "value": 2, "text": "Pretty good handle on it..."},
+    { "value": 3, "text": "Confident that I understand it..."},
+    { "value": 4, "text": "Feel pretty expert at it..."}
+  ],
+  "timestamp_column": "Timestamp",
+  "name_column": "First Name"
+}

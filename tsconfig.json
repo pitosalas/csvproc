@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "outDir": "built/",
+        "sourceMap": true,
+        "target": "es5"
+    },
+    "filesGlob": [
+        "./**/*.ts"
+    ],
+    "files": [
+        "./config.ts",
+        "./csvproc.ts",
+        "./datafile.ts",
+        "./generate.ts",
+        "./project.ts",
+        "./survey.ts",
+        "./test.ts",
+        "./typings/node/node-0.10.d.ts",
+        "./typings/should/should.d.ts",
+        "./typings/tsd.d.ts"
+    ]
+}
