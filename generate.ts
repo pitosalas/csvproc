@@ -25,7 +25,7 @@ export class Generate {
   }
 
   generateTicValues():string {
-  /* Generate one of these rows for each desired horizontal tic
+  /* Generate one of these rows for each desired horizontal tic, e.g.
     new Date(2015, 1, 11),
     new Date(2015, 2, 11),
     new Date(2015, 3, 11),
@@ -34,11 +34,22 @@ export class Generate {
     new Date(2015, 6, 11)*/
     var result = "";
     for (var month of this.proj.getSurveyMonths()) {
-      result += `new Date(${month.getFullYear()}, ${month.getMonth()}, 1);`
+      result += `new Date(${month.getFullYear()}, ${month.getMonth()}, 1),`
     }
     return result;
   }
 
+  generateQuestions():string {
+    /* Generate one of these rows for each question in the survey
+    {v: 0, f: ""},
+    {v: 1, f: "No idea"},
+    {v: 2, f: "Can guess"},
+    {v: 3, f: "Studied it"},
+    {v: 4, f: "understand it"},
+    {v: 5, f: "An expert"},
+    {v: 6, f: ""} */
+    return "";
+  }
 
   chartHtmlFileContents():string {
     var chart_html_template = `<script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -74,14 +85,7 @@ export class Generate {
                 gridlines: {color: 'none'}
             },
             vAxis: {
-                ticks: [
-                    {v: 0, f: ""},
-                    {v: 1, f: "No idea"},
-                    {v: 2, f: "Can guess"},
-                    {v: 3, f: "Studied it"},
-                    {v: 4, f: "understand it"},
-                    {v: 5, f: "An expert"},
-                    {v: 6, f: ""}],
+                ticks: [${this.generateQuestions()}],
                 title: 'Mastery',
                 gridlines: {color: 'none'},
                 width: '100%',
