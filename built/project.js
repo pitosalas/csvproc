@@ -1,10 +1,14 @@
 var Project = (function () {
-    function Project(questions, surveys) {
+    function Project(conf, questions, surveys) {
+        this.conf = conf;
         this.questions = questions;
         this.surveys = surveys;
         this.timestamp_column = 0;
         this.name_column = 13;
     }
+    Project.prototype.getResponses = function () {
+        return this.conf.responses;
+    };
     Project.prototype.getSurveyMonths = function () {
         var firstDate = this.surveys[0].when;
         var lastDate = this.surveys.slice(-1)[0].when;

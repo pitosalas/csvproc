@@ -13,7 +13,7 @@ var Config = (function () {
         for (var _i = 0, _a = this.responses; _i < _a.length; _i++) {
             var a = _a[_i];
             if (a.text == answer) {
-                return a.order;
+                return a.value;
             }
         }
         throw new Error("Invalid response string " + answer);

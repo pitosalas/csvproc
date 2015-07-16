@@ -1,7 +1,7 @@
 import fs = require('fs');
 
 export interface Answer {
-  order: number,
+  value: number,
   text: string
 }
 
@@ -20,7 +20,7 @@ export class Config {
 
   mapAnswerToNum(answer:string):number {
     for (var a of this.responses) {
-      if (a.text == answer) { return a.order;}
+      if (a.text == answer) { return a.value;}
     }
     throw new Error(`Invalid response string ${answer}`);
   }
